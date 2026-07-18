@@ -244,6 +244,8 @@ def test_grapheme_boundary_before_edge_cases():
     assert grapheme_boundary_before('abc', 0) == 0
     assert grapheme_boundary_before('abc', 100) == 2  # pos > len clamps
     assert grapheme_boundary_before('', 0) == 0
+    assert grapheme_boundary_before('', 1) == 0
+    assert grapheme_boundary_before('', 100) == 0
 
 
 def test_iter_graphemes_reverse_edge_cases():

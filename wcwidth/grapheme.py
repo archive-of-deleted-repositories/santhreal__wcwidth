@@ -440,9 +440,11 @@ def grapheme_boundary_before(unistr: str, pos: int) -> int:
 
     .. versionadded:: 0.3.6
     """
+    # Clamp before lookup; empty / non-positive pos has no preceding cluster.
+    pos = min(pos, len(unistr))
     if pos <= 0:
         return 0
-    return _find_cluster_start(unistr, min(pos, len(unistr)))
+    return _find_cluster_start(unistr, pos)
 
 
 def iter_graphemes_reverse(
